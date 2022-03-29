@@ -3,21 +3,23 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'montserrat': ['Montserrat'],
+        default: ['Montserrat']
       },
       animation: {
-        fadeIn: 'fadeIn .15s forwards',
-        fadeOut: 'fadeOut .15s forwards',
+        fadeIn: 'fade .15s forwards',
+        fadeOut: 'fade .15s reverse forwards',
+        openNav: 'navbar .25s forwards',
+        closeNav: 'navbar .25s reverse forwards ',
       },
       keyframes: {
-        fadeIn: {
+        fade: {
           from: { opacity: 0 },
-          to: { opacity: 1 },
+          to: { opacity: .8 },
         },
-        fadeOut: {
-          from: { opacity: 1 },
-          to: { opacity: 0 },
-        },
+        navbar: {
+          from: {transform: 'translateY(-2.5rem)'},
+          to: {transform: 'translateY(5rem)'}
+        }
 
 
       },
