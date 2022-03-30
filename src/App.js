@@ -2,7 +2,10 @@
 import './output.css'
 import React, { useEffect, useState } from 'react';
 import Icon from './svg';
-import Avatar from './images/avatar.JPG'
+import Image from './images';
+import Resume from './documents/resume.pdf'
+import Card from './components/card';
+import Projects from './components/projects.json'
 
 
 
@@ -27,10 +30,12 @@ function App() {
         main: 'text-white bg-neutral-900 lg:text-sm',
         alt: 'text-neutral-700 bg-white',
         text: 'text-white',
+        alttext: 'text-neutral-800',
         modal: 'border-b border-neutral-500',
-        border: 'border border-white',
+        border: 'border border-neutral-500',
         wash: 'bg-black',
         pop: 'bg-emerald-500',
+        poptext: 'text-emerald-500'
       })
       setMode('animate-light')
       document.body.style.background = 'bg-neutral-900'
@@ -39,12 +44,14 @@ function App() {
       setStyle({
         style: true,
         main: 'text-neutral-700 bg-white lg:text-sm',
-        alt: 'text-white bg-neutral-900',
+        alt: 'text-white bg-neutral-700',
         text: 'text-neutral-800',
+        alttext: 'text-white',
         modal: 'border-b border-neutral-400',
-        border: 'border border-neutral-500',
+        border: 'border border-neutral-400',
         wash: 'bg-black',
         pop: 'bg-orange-300 text-neutral-900',
+        poptext: 'text-orange-300'
       })
       setMode('animate-dark')
       document.body.style.background = 'bg-white'
@@ -85,47 +92,86 @@ function App() {
       </header>
 
       <main className=" flex flex-col items-center pt-12 w-full">
-        <div className='h-[36rem] w-full p-4 flex'>
-          <img src={Avatar} alt='avatar'
-            className={`${style.border} h-20 rounded-sm border`}>
-          </img>
-          <div className='ml-2 text-sm text-center'>
-            <ul className='my-2'>
-              <li className='font-semibold'> Full Stack Developer | Software Engineer | UI/UX Design</li>
-              <li className='mt-2'>Oceanside, CA United States</li>
-            </ul>
-          </div>
-        </div>
-        <div className={`text-white h-[36rem] w-full ${style.pop}`}>
-          hey
-        </div>
-        <div className={`text-white h-[36rem] w-full bg-neutral-900`}>
-          hey
-        </div>
 
-
+        {renderAboutMe()}
+        {renderProjects()}
 
         {themeToggle()}
-      </main>
+
+      </main >
       <footer>
 
       </footer>
 
-    </div>
+    </div >
   );
 
 
 
+  function renderProjects() {
+
+    return <div className={`${style.pop} w-full p-4 pb-14 `}>
+      <div className='flex w-full'>
+        <div className='ml-2 text-sm text-center'>
+        </div>
+      </div>
+      <div className={` rounded-sm h-content p-4 my-4`}>
+        <header className={`${style.alttext} text-3xl font-medium flex justify-end`}>Projects</header>
+
+        {Projects.map((data, index) => {
+          return <Card props={data} css={style} key={index} />;
+        })}
+
+      </div>
+    </div>;
+  }
+
+  function renderAboutMe() {
+    return <div className=' w-full p-4 mt-4 '>
+      <div className='flex w-full'>
+        <Image title={'avatar'} classes={` h-20 rounded-sm`} />
+        <div className='ml-2 text-sm text-center'>
+          <ul className='my-2'>
+            <li className='font-semibold'> Full Stack Developer | Software Engineer | UI/UX Design</li>
+            <li className='mt-2'>Oceanside, CA United States</li>
+          </ul>
+          <div className='border-b border-neutral-500 -mt-1 mx-5'></div>
+        </div>
+      </div>
+      <div className={` rounded-sm h-content p-4 my-6`}>
+        <header className='text-3xl font-medium'>About Me</header>
+        <p className='indent-5 text-md my-5'>
+          Trained Full Stack Developer for modern applications and frameworks. Currently Junior / Entry level experience with front-end and back-end environments. My time is spent implementing new frameworks and applying skills learned from mentors or Snowboarding.
+        </p>
+        <p className='indent-5 text-md'>
+          Here you'll find all the projects I'd like you to see. If you'd like to collab on anything or would just like to connect, here are my other socials.
+        </p>
+        <div className='w-full flex justify-around items-center h-16 mt-6'>
+          <a href={Resume} target="_blank" rel="noopener noreferrer"  className={`ml-2 h-4/6 w-48 flex justify-center items-center uppercase font-medium hover:font-bold ${style.alt} rounded-md`}>
+            Resume
+            <Icon title={'doc'} classes={'ml-2 h-2/6 '} />
+          </a>
+          <div className='w-full h-full flex justify-end space-x-5 items-center mr-2'>
+            <a href='https://github.com/DillanThomas88' target="_blank" rel="noopener noreferrer"  className='h-4/6'>
+              <Icon title={'github'} classes={' h-full '} />
+            </a>
+            <a href='https://www.linkedin.com/in/dillanthomasmansor/' target="_blank" rel="noopener noreferrer"  className='h-4/6'>
+              <Icon title={'linkedin'} classes={' h-full '} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>;
+  }
+
   function themeToggle() {
     return <div onClick={() => toggleDarkmode()}
-      className={`${style.text} ${mode} fixed -bottom-[3rem] -right-[3rem] h-[6rem] w-[6rem] flex cursor-pointer`}>
+      className={`${style.main} fixed bottom-2 right-2 flex cursor-pointer rounded-full p-2 shadow-lg shadow-neutral-900`}>
       <div className='pointer-events-none flex flex-wrap w-full h-full justify-between items-between '>
-        <div className='w-[6rem] h-[3rem] flex justify-start items-start '>
-
-          <Icon title={'light'} classes={'h-8'} />
-        </div>
-        <div className='pointer-events-none w-[6rem] h-[3rem] flex justify-end items-end'>
-          <Icon title={'dark'} classes={'h-8  rotate-180'} />
+        <div className='pointer-events-none flex justify-end items-end'>
+          {isDark
+            ? <Icon title={'dark'} classes={'h-8'} />
+            : <Icon title={'light'} classes={'h-8'} />}
         </div>
       </div>
     </div>;
@@ -155,7 +201,7 @@ function App() {
         </div>
 
         <div onClick={toggleNavbar}
-          className={`${overlay} fixed top-0 w-full h-full -z-20 ${style.wash} opacity-10`}></div>
+          className={`${overlay} fixed top-0 w-full h-full -z-20 ${style.wash}`}></div>
 
         <div style={{ transform: 'translateY(-2.5rem)' }} className={`${style.main} navbar -z-10 ${anim} absolute w-full font-medium`}>
           <ul onClick={(e) => handleNavigation(e)}

@@ -1,0 +1,14 @@
+[
+    {
+        "name": "stargrab",
+        "type": "Math Game",
+        "desc": "Star Grab is a color matching and math sums game to play with your friends or alone against the clock!",
+        "link": "https://dillanthomas88.github.io/StarGrab/"
+    },
+    {
+        "name": "hexa",
+        "type": "luck game",
+        "desc": "Hexa is a luck based game. Inspired by the classic 'Farckle'. Get combos like a four of a kind, five of a kind, or many more.",
+        "link": "https://dillanthomas88.github.io/HEXA/"
+    }
+]
