@@ -146,17 +146,21 @@ function App() {
   function renderAboutMe() {
     return <div className={`${style.main} w-full p-4 mt-4 `}>
       <div className='flex w-full'>
-        <Image title={'avatar'} classes={` h-20 rounded-sm`} />
-        <div className='ml-2 text-sm text-center'>
-          <ul className='my-2'>
-            <li className='font-semibold'> Full Stack Developer | Software Engineer | UI/UX Design</li>
-            <li className='mt-2'>Oceanside, CA United States</li>
+        <Image title={'avatar'} classes={` h-24 rounded-sm`} />
+        <div className=' text-sm text-center '>
+          <ul className=' mb-2'>
+            <li>Dillan T. Mansor</li>
+            <li className='font-semibold my-1'> Full Stack Developer | Software Engineer | UI/UX Design</li>
+            <li className='my-1'>Oceanside, CA United States</li>
           </ul>
           <div className='border-b border-neutral-500 -mt-1 mx-5'></div>
         </div>
       </div>
       <div className={` rounded-sm h-content p-4 my-6`}>
-        <header className='text-3xl font-medium'>About Me</header>
+        <header className='text-3xl font-medium'>
+          
+          <div>About Me</div>
+        </header>
         <p className='indent-5 text-md my-5'>
           Trained Full Stack Developer for modern applications and frameworks. Currently Junior / Entry level experience with front-end and back-end environments. My time is spent implementing new frameworks and applying skills learned from mentors or Snowboarding.
         </p>
