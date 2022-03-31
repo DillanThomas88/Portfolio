@@ -11,6 +11,7 @@ import Projects from './components/projects.json'
 
 function App() {
 
+
   const [isDark, setisDark] = useState(false)
   const [style, setStyle] = useState('')
   const [navbar, setNavbar] = useState(false)
@@ -32,7 +33,7 @@ function App() {
         text: 'text-white',
         alttext: 'text-neutral-800',
         modal: 'border-b border-neutral-500',
-        border: 'border border-neutral-500',
+        border: 'border-b border-neutral-600',
         wash: 'bg-black',
         pop: 'bg-emerald-500',
         poptext: 'text-emerald-500'
@@ -48,7 +49,7 @@ function App() {
         text: 'text-neutral-800',
         alttext: 'text-white',
         modal: 'border-b border-neutral-400',
-        border: 'border border-neutral-400',
+        border: 'border-b border-neutral-300',
         wash: 'bg-black',
         pop: 'bg-orange-300 text-neutral-900',
         poptext: 'text-orange-300'
@@ -96,6 +97,22 @@ function App() {
         {renderAboutMe()}
         {renderProjects()}
 
+
+        <div
+          className={`${style.main} w-full h-[30rem] flex flex-col items-center justify-center`}>
+
+          <div className={`${style.border} w-4/6 my-4`}></div>
+          <div className='transition ease-in-out hover:scale-110 flex flex-col justify-center'
+          onClick={() => window.location = 'mailto:dillanthomas88@gmail.com'}>
+
+            <div className=' text-2xl font-semibold mb-2 text-center pointer-events-none'>Contact Me</div>
+            <div className=' flex justify-center items-center animate-wiggle pointer-events-none'>
+              <Icon title={'send'} classes={`w-1/6  pointer-events-none`} />
+            </div>
+          </div>
+          <div className={`${style.border} w-4/6 my-4`}></div>
+        </div>
+
         {themeToggle()}
 
       </main >
@@ -127,7 +144,7 @@ function App() {
   }
 
   function renderAboutMe() {
-    return <div className=' w-full p-4 mt-4 '>
+    return <div className={`${style.main} w-full p-4 mt-4 `}>
       <div className='flex w-full'>
         <Image title={'avatar'} classes={` h-20 rounded-sm`} />
         <div className='ml-2 text-sm text-center'>
@@ -147,15 +164,15 @@ function App() {
           Here you'll find all the projects I'd like you to see. If you'd like to collab on anything or would just like to connect, here are my other socials.
         </p>
         <div className='w-full flex justify-around items-center h-16 mt-6'>
-          <a href={Resume} target="_blank" rel="noopener noreferrer"  className={`ml-2 h-4/6 w-48 flex justify-center items-center uppercase font-medium hover:font-bold ${style.alt} rounded-md`}>
+          <a href={Resume} target="_blank" rel="noopener noreferrer" className={`ml-2 h-4/6 w-3/6 flex justify-center items-center uppercase text-lg font-medium hover:font-bold ${style.alt} rounded-md`}>
             Resume
-            <Icon title={'doc'} classes={'ml-2 h-2/6 '} />
+            <Icon title={'doc'} classes={'ml-2 h-[1.1rem] '} />
           </a>
-          <div className='w-full h-full flex justify-end space-x-5 items-center mr-2'>
-            <a href='https://github.com/DillanThomas88' target="_blank" rel="noopener noreferrer"  className='h-4/6'>
+          <div className='w-3/6 h-full flex justify-around items-center pl-4'>
+            <a href='https://github.com/DillanThomas88' target="_blank" rel="noopener noreferrer" className='h-4/6'>
               <Icon title={'github'} classes={' h-full '} />
             </a>
-            <a href='https://www.linkedin.com/in/dillanthomasmansor/' target="_blank" rel="noopener noreferrer"  className='h-4/6'>
+            <a href='https://www.linkedin.com/in/dillanthomasmansor/' target="_blank" rel="noopener noreferrer" className='h-4/6'>
               <Icon title={'linkedin'} classes={' h-full '} />
             </a>
           </div>

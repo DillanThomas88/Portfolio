@@ -7,6 +7,7 @@ import {ReactComponent as Linkedin} from './linkedin.svg'
 import {ReactComponent as Github} from './github.svg'
 import {ReactComponent as Doc} from './doc.svg'
 import {ReactComponent as Link} from './link.svg'
+import {ReactComponent as Send} from './send.svg'
 
 function Icon({title, classes}) {
 
@@ -19,6 +20,7 @@ function Icon({title, classes}) {
         github: <Github className={classes} />,
         doc: <Doc className={classes} />,
         link: <Link className={classes} />,
+        send: <Send className={classes} />,
     }
     return (<>
         {icons[title]}
